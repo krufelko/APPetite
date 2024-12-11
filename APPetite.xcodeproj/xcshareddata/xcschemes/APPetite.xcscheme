@@ -80,6 +80,11 @@
             value = "AIzaSyCeYP-3Prr0mlq86OTWCDnpAkqUUgdeUg0"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "geminyAPIKey"
+            value = "AIzaSyCeYP-3Prr0mlq86OTWCDnpAkqUUgdeUg0"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

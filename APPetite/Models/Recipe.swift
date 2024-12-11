@@ -22,14 +22,16 @@ struct Recipe: Codable, Identifiable {
     let ingredients: [String]
     let measures: [String]
     let imageURL: String
-    var simplifiedSteps: [String]
+    var simplifiedSteps: [String] = [] // Default value
     
     enum CodingKeys: String, CodingKey {
         case id = "idMeal"
         case name = "strMeal"
         case instructions = "strInstructions"
         case imageURL = "strMealThumb"
+        case ingredients, measures // Explicitly mark these as not mapped from JSON
     }
+    
 }
 
 struct MealDBResponse: Codable {

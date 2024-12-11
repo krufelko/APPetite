@@ -13,7 +13,7 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             // Search TextField
-            TextField("Find in Favourites...", text: $searchText)
+            TextField("Find Recipes...", text: $searchText)
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(20)

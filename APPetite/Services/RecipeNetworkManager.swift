@@ -19,9 +19,11 @@ import GoogleGenerativeAI
 class RecipeNetworkManager {
     static let shared = RecipeNetworkManager()
     private let baseURL = Environment.mealDBBaseURL
-    private let genAI = GoogleGenerativeAI(apiKey: Environment.geminiAPIKey)
+    private let genAI: GenerativeModel
     
-    private init() {}
+    private init() {
+        self.genAI = GenerativeModel(name: "gemini", apiKey: Environment.geminiAPIKey) // Adjust if needed.
+    }
     
     // Fetch random recipe from the MealDB API
     func fetchRandomRecipe() async throws -> Recipe {
@@ -108,22 +110,32 @@ class RecipeNetworkManager {
     
     // This is the system prompt we used to get Gemini to break down the instructions from the MealDB API into a step-by-step format
     private func simplifyInstructions(_ instructions: String) async throws -> [String] {
-        let model = genAI.generateContent()
         let prompt = """
         Convert these cooking instructions into simple, short, step-by-step instructions. 
         Return only the numbered steps, one per line:
         \(instructions)
         """
         
-        let response = try await model.generate(prompt: prompt)
-        let simplifiedText = response.text ?? ""
+        // Generate content using genAI
+        let response: GenerateContentResponse
+        do {
+            response = try await genAI.generateContent(prompt)
+        } catch {
+            throw NetworkError.apiError("Failed to generate content: \(error.localizedDescription)")
+        }
+        
+        // Safely unwrap response text
+        guard let simplifiedText = response.text, !simplifiedText.isEmpty else {
+            throw NetworkError.apiError("Generated response text is empty or nil")
+        }
         
         // Split the response into an array of steps
         return simplifiedText
-            .components(separatedBy: .newlines)
-            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .components(separatedBy: CharacterSet.newlines) // Explicitly specify CharacterSet
+            .map { $0.trimmingCharacters(in: CharacterSet.whitespaces) } // Explicitly specify CharacterSet
             .filter { !$0.isEmpty }
     }
+
 }
 
 // MARK: - Error Handling

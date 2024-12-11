@@ -73,13 +73,3 @@ struct SettingsView: View {
         Text("Settings")
     }
 }
-
-// Main App Entry Point
-@main
-struct MyApp: App {
-    var body: some Scene {
-        WindowGroup {
-            TabBarView() // Use the TabBarView here
-        }
-    }
-}
