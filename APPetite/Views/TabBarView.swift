@@ -44,11 +44,6 @@ struct TabBarView: View {
 }
 
 // Placeholder views for each tab
-struct HomeView: View {
-    var body: some View {
-        Text("Home")
-    }
-}
 
 struct ShoppingListView: View {
     var body: some View {

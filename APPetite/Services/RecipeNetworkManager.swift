@@ -21,12 +21,12 @@ class RecipeNetworkManager {
     private let baseURL = Environment.mealDBBaseURL
     private let genAI: GenerativeModel
     
-    private init() {
+    init() {
         self.genAI = GenerativeModel(name: "gemini", apiKey: Environment.geminiAPIKey) // Adjust if needed.
     }
     
     // Fetch random recipe from the MealDB API
-    func fetchRandomRecipe() async throws -> Recipe {
+    public func fetchRandomRecipe() async throws -> Recipe {
         let endpoint = "\(baseURL)/random.php"
         guard let url = URL(string: endpoint) else {
             throw NetworkError.invalidURL

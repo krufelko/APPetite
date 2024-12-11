@@ -11,8 +11,10 @@ import SwiftUI
 struct APPetiteApp: App {
     var body: some Scene {
         WindowGroup {
-            //ContentView()
+            
             SearchBar()
+        
+            TabBarView()
         }
     }
 }

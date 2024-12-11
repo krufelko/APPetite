@@ -1,14 +1,10 @@
-//
-//  SearchBarView.swift
-//  APPetite
-//
-//  Created by Felix Krumme on 10.12.24.
-//
-
 import SwiftUI
 
 struct SearchBar: View {
     @State private var searchText: String = ""
+    
+    // Define a closure or action for the search
+    var onSearch: (String) -> Void = { _ in }
     
     var body: some View {
         HStack {
@@ -31,6 +27,10 @@ struct SearchBar: View {
                         .buttonStyle(PlainButtonStyle())
                     }
                 )
+                .onSubmit {
+                    // Trigger the search action on "Enter"
+                    onSearch(searchText)
+                }
                 .padding(.horizontal, 10)
         }
         .cornerRadius(25)
@@ -40,7 +40,9 @@ struct SearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar()
-            .previewLayout(.sizeThatFits)
+        SearchBar { query in
+            print("Searching for: \(query)")
+        }
+        .previewLayout(.sizeThatFits)
     }
 }
