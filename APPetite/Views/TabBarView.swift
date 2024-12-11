@@ -43,28 +43,3 @@ struct TabBarView: View {
     }
 }
 
-// Placeholder views for each tab
-
-struct ShoppingListView: View {
-    var body: some View {
-        Text("Shopping List")
-    }
-}
-
-struct BookmarksView: View {
-    var body: some View {
-        Text("Bookmarks")
-    }
-}
-
-struct SearchView: View {
-    var body: some View {
-        Text("Search")
-    }
-}
-
-struct SettingsView: View {
-    var body: some View {
-        Text("Settings")
-    }
-}

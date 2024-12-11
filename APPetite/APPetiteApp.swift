@@ -12,8 +12,7 @@ struct APPetiteApp: App {
     var body: some Scene {
         WindowGroup {
             
-            SearchBar()
-        
+            HomeView()
             TabBarView()
         }
     }

@@ -52,7 +52,7 @@ struct HomeView: View {
                         id: "3",
                         name: "Spaghetti Carbonara",
                         instructions: "Classic Italian pasta dish.",
-                        ingredients: [],
+                        ingredients: ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon"],
                         measures: [],
                         imageURL: "https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg"
                     ))
