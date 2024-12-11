@@ -1,5 +1,13 @@
 //
 //  Environment.swift
+//  APPetite
+//
+//  Created by Felix Krumme on 10.12.24.
+//
+
+
+//
+//  Environment.swift
 //  Appetite
 //
 //  Created by Evelyn Tran on 11/16/24.
