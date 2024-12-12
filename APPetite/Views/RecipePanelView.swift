@@ -1,14 +1,8 @@
-//
-//  RecipePanelView.swift
-//  APPetite
-//
-//  Created by Felix Krumme on 11.12.24.
-//
-
 import SwiftUI
 
 struct RecipePanel: View {
     let recipe: Recipe
+    private let panelWidth: CGFloat = 200 // Fixed width for all panels
     
     var body: some View {
         NavigationLink(destination: RecipeCardView(recipe: recipe)) {
@@ -18,16 +12,20 @@ struct RecipePanel: View {
                     image
                         .resizable()
                         .scaledToFill()
-                        .clipped()
+                        .frame(width: panelWidth, height: 150) // Match fixed width and height
+                        .clipped() // Clip to panel size
                 } placeholder: {
                     // Placeholder while image loads
-                    Color.gray.opacity(0.3)
+                    Color.gray.opacity(1)
+                        .frame(width: panelWidth, height: 150) // Match fixed width and height
+                        .cornerRadius(10)
                 }
                 .cornerRadius(10)
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("easy") // Example difficulty, can be dynamic
+                        
                             .font(.caption)
                             .foregroundColor(.white)
                         Spacer()
@@ -40,10 +38,13 @@ struct RecipePanel: View {
                         .font(.headline)
                         .foregroundColor(.white)
                         .bold()
+                        .lineLimit(2) // Allow text to wrap to two lines
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(10)
             }
-            .frame(height: 150) // Adjust height as needed
+            .frame(width: panelWidth, height: 150) // Fixed width and height for panel
             .cornerRadius(10)
             .shadow(radius: 5)
         }
@@ -55,7 +56,7 @@ struct RecipePanel_Previews: PreviewProvider {
         NavigationView {
             RecipePanel(recipe: Recipe(
                 id: "1",
-                name: "Scrambled Eggs",
+                name: "Delicious Scrambled Eggs with Cheddar and Chives", // Long title to test wrapping
                 instructions: "Beat eggs. Cook in a pan. Season and serve.",
                 ingredients: ["Eggs", "Salt", "Butter"],
                 measures: ["2", "1 tsp", "1 tbsp"],
