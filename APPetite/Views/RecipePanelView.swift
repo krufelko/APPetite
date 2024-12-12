@@ -3,9 +3,9 @@ import SwiftUI
 struct RecipePanel: View {
     let recipe: Recipe
     private let panelWidth: CGFloat = 200 // Fixed width for all panels
-    
+
     var body: some View {
-        NavigationLink(destination: RecipeCardView(recipe: recipe)) {
+        NavigationLink(destination: RecipeCardView(recipe: recipe).toolbar(.visible, for: .tabBar)) {
             ZStack {
                 // Background image
                 AsyncImage(url: URL(string: recipe.imageURL)) { image in
@@ -21,11 +21,10 @@ struct RecipePanel: View {
                         .cornerRadius(10)
                 }
                 .cornerRadius(10)
-                
+
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("easy") // Example difficulty, can be dynamic
-                        
                             .font(.caption)
                             .foregroundColor(.black)
                         Spacer()
@@ -47,23 +46,6 @@ struct RecipePanel: View {
             .frame(width: panelWidth, height: 150) // Fixed width and height for panel
             .cornerRadius(10)
             .shadow(radius: 5)
-        }
-    }
-}
-
-struct RecipePanel_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            RecipePanel(recipe: Recipe(
-                id: "1",
-                name: "Delicious Scrambled Eggs with Cheddar and Chives", // Long title to test wrapping
-                instructions: "Beat eggs. Cook in a pan. Season and serve.",
-                ingredients: ["Eggs", "Salt", "Butter"],
-                measures: ["2", "1 tsp", "1 tbsp"],
-                imageURL: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
-            ))
-            .previewLayout(.sizeThatFits)
-            .padding()
         }
     }
 }
