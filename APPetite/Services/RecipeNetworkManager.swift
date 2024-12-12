@@ -43,7 +43,7 @@ class RecipeNetworkManager {
     }
     
     // Search recipes by name
-    func searchRecipes(query: String) async throws -> [Recipe] {
+    public func searchRecipes(query: String) async throws -> [Recipe] {
         let endpoint = "\(baseURL)/search.php?s=\(query)"
         guard let url = URL(string: endpoint) else {
             throw NetworkError.invalidURL
@@ -75,7 +75,7 @@ class RecipeNetworkManager {
     }
     
     // Convert MealDBMeal to Recipe and simplify instructions
-    private func convertToRecipe(_ meal: MealDBMeal) async throws -> Recipe {
+    public func convertToRecipe(_ meal: MealDBMeal) async throws -> Recipe {
         // Extract ingredients and measures using reflection
         let mirror = Mirror(reflecting: meal)
         var ingredients: [String] = []
@@ -109,7 +109,7 @@ class RecipeNetworkManager {
     }
     
     // This is the system prompt we used to get Gemini to break down the instructions from the MealDB API into a step-by-step format
-    private func simplifyInstructions(_ instructions: String) async throws -> [String] {
+    public func simplifyInstructions(_ instructions: String) async throws -> [String] {
         let prompt = """
         Convert these cooking instructions into simple, short, step-by-step instructions. 
         Return only the numbered steps, one per line:

@@ -31,6 +31,7 @@
 		B1565C4C2D09007A008B64C2 /* APPetite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPetite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1565C5C2D09007E008B64C2 /* APPetiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APPetiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1565C662D09007E008B64C2 /* APPetiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APPetiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1AF94322D0A550500EA08AC /* APPetite.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = APPetite.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +81,7 @@
 		B1565C432D09007A008B64C2 = {
 			isa = PBXGroup;
 			children = (
+				B1AF94322D0A550500EA08AC /* APPetite.xctestplan */,
 				B1565C4E2D09007A008B64C2 /* APPetite */,
 				B1565C5F2D09007E008B64C2 /* APPetiteTests */,
 				B1565C692D09007E008B64C2 /* APPetiteUITests */,
@@ -184,7 +186,6 @@
 					};
 					B1565C5B2D09007E008B64C2 = {
 						CreatedOnToolsVersion = 16.1;
-						TestTargetID = B1565C4B2D09007A008B64C2;
 					};
 					B1565C652D09007E008B64C2 = {
 						CreatedOnToolsVersion = 16.1;
@@ -402,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"APPetite/Preview Content\"";
@@ -434,6 +436,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"APPetite/Preview Content\"";
@@ -464,7 +467,6 @@
 		B1565C742D09007E008B64C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -475,14 +477,12 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APPetite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/APPetite";
 			};
 			name = Debug;
 		};
 		B1565C752D09007E008B64C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -493,7 +493,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/APPetite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/APPetite";
 			};
 			name = Release;
 		};
