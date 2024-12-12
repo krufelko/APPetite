@@ -2,9 +2,9 @@ import SwiftUI
 
 struct RecipeCardView: View {
     let recipe: Recipe
+    
     @State private var isIngredientsExpanded: Bool = false
     @State private var isInstructionsExpanded: Bool = false
-
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 16) {
@@ -31,133 +31,86 @@ struct RecipeCardView: View {
                     }
                 }
                 .frame(height: 200)
-                .cornerRadius(12)
-
-                VStack(alignment: .leading, spacing: 16) {
-                    // Recipe Details
-                    HStack {
-                        Text("easy")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Text("15 min")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-
-                    Text(recipe.name)
-                        .font(.largeTitle)
-<<<<<<< HEAD
-                @unknown default:
-                    EmptyView()
-                }
-            }
-            .frame(height: 200)
-            .clipped()
-            .cornerRadius(12)
-            
-            // Recipe Details
-            VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    Text(recipe.name)
-                        .font(.title)
-                        .fontWeight(.bold)
-                }
-                
-                // Ingredients Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Ingredients")
-                        .font(.headline)
-                    
-                    ForEach(Array(zip(recipe.ingredients, recipe.measures)), id: \.0) { ingredient, measure in
-                        Text("• \(measure) \(ingredient)")
-                            .font(.subheadline)
-                    }
-                }
-                
-                Divider()
-                
-                // Steps Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Steps")
-                        .font(.headline)
-                    
-                    ForEach(recipe.simplifiedSteps.indices, id: \.self) { index in
-                        Text("\(index + 1). \(recipe.simplifiedSteps[index])")
-                            .font(.subheadline)
-=======
-                        .fontWeight(.bold)
-
-                    // Tags
-                    //HStack(spacing: 8) {
-                    //    TagView(tag: "vegetarian")
-                    //    TagView(tag: "gluten-free")
-                    //    TagView(tag: "high-protein")
-                    //}
-
-                    // Ingredients Section
-                    DisclosureGroup(isExpanded: $isIngredientsExpanded) {
-                        ForEach(Array(zip(recipe.ingredients, recipe.measures)), id: \.0) { ingredient, measure in
-                            HStack {
-                                Text(ingredient)
-                                Spacer()
-                                Text(measure)
-                                    .foregroundColor(.secondary)
+                                .cornerRadius(12)
+                                VStack(alignment: .leading, spacing: 16) {
+                                    // Recipe Details
+                                    HStack {
+                                        Text("easy")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                        Text("15 min")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    Text(recipe.name)
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                    // Tags
+                                    //HStack(spacing: 8) {
+                                    //    TagView(tag: "vegetarian")
+                                    //    TagView(tag: "gluten-free")
+                                    //    TagView(tag: "high-protein")
+                                    //}
+                                    // Ingredients Section
+                                    DisclosureGroup(isExpanded: $isIngredientsExpanded) {
+                                        ForEach(Array(zip(recipe.ingredients, recipe.measures)), id: \.0) { ingredient, measure in
+                                            HStack {
+                                                Text(ingredient)
+                                                Spacer()
+                                                Text(measure)
+                                                    .foregroundColor(.secondary)
+                                            }
+                                            .padding(.vertical, 4)
+                                        }
+                                    } label: {
+                                        Text("Ingredients")
+                                            .font(.headline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    Divider()
+                                    // Instructions Section
+                                    DisclosureGroup(isExpanded: $isInstructionsExpanded) {
+                                        ForEach(recipe.simplifiedSteps.indices, id: \.self) { index in
+                                            Text("\(index + 1). \(recipe.simplifiedSteps[index])")
+                                                .padding(.vertical, 4)
+                                        }
+                                    } label: {
+                                        Text("Instructions")
+                                            .font(.headline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
+                                .padding()
+                               
                             }
-                            .padding(.vertical, 4)
+                            .cornerRadius(16)
+                            .padding()
                         }
-                    } label: {
-                        Text("Ingredients")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
-                    }
-
-                    Divider()
-
-                    // Instructions Section
-                    DisclosureGroup(isExpanded: $isInstructionsExpanded) {
-                        ForEach(recipe.simplifiedSteps.indices, id: \.self) { index in
-                            Text("\(index + 1). \(recipe.simplifiedSteps[index])")
-                                .padding(.vertical, 4)
-                        }
-                    } label: {
-                        Text("Instructions")
-                            .font(.headline)
-                            .foregroundColor(.secondary)
->>>>>>> 742427c8568609a9b190a7bda83f71b1fff3bc0c
-                    }
+                        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+                        .toolbar(.hidden, for: .tabBar) // Hide the tab bar
+                
+                        // Call to Action Button
+                        Button(action: {
+                    // Action for cooking
+                }) {
+                    Text("Let's cook")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.white.opacity(0.3))
+                        .cornerRadius(10)
+                        .shadow(radius: 3)
+                        .overlay(
+                            HStack {
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                                    .foregroundColor(.black)
+                                    .padding(.trailing, 8)
+                            }
+                        )
                 }
+                .foregroundColor(.black)
                 .padding()
-
-               
             }
-            .cornerRadius(16)
-            .padding()
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
-        .toolbar(.hidden, for: .tabBar) // Hide the tab bar
-        
-        // Call to Action Button
-        Button(action: {
-            // Action for cooking
-        }) {
-            Text("Let's cook")
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.white.opacity(0.3))
-                .cornerRadius(10)
-                .shadow(radius: 3)
-                .overlay(
-                    HStack {
-                        Spacer()
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(.black)
-                            .padding(.trailing, 8)
-                    }
-                )
-        }
-        .foregroundColor(.black)
-        .padding()
-    }
-}
