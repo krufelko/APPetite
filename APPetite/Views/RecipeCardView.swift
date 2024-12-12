@@ -70,3 +70,26 @@ struct RecipeCardView: View {
         .padding(.horizontal)
     }
 }
+
+struct RecipeCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecipeCardView(
+            recipe: Recipe(
+                id: "1",
+                name: "Spaghetti Carbonara",
+                instructions: "Cook spaghetti. Mix eggs, cheese, and bacon. Combine and serve.",
+                ingredients: ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon"],
+                measures: ["200g", "2", "50g", "100g"],
+                imageURL: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+                simplifiedSteps: [
+                    "Boil spaghetti until al dente.",
+                    "Cook bacon until crispy.",
+                    "Mix eggs and Parmesan in a bowl.",
+                    "Combine everything in the pan and serve."
+                ]
+            )
+        )
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}

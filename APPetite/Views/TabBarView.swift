@@ -22,7 +22,7 @@ struct TabBarView: View {
                     Text("Shopping List")
                 }
             
-            BookmarkView()
+            BookmarksView()
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Bookmarks")

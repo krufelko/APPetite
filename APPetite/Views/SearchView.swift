@@ -28,11 +28,9 @@ struct SearchView: View {
     var body: some View {
         VStack(alignment: .leading) {
             // Search Bar
-            SearchBar()
-                .onChange(of: query) {
-                    //newQuery in
-                    //query = newQuery
-                }
+            SearchBar {newQuery in
+                query = newQuery
+            }
 
             Text("\(filteredRecipes.count) Recipes bookmarked")
                 .font(.headline)

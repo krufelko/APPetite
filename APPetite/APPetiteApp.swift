@@ -11,8 +11,6 @@ import SwiftUI
 struct APPetiteApp: App {
     var body: some Scene {
         WindowGroup {
-            
-            HomeView()
             TabBarView()
         }
     }

@@ -12,7 +12,7 @@ struct SearchBar: View {
     @State private var searchText: String = ""
     
     // Define a closure or action for the search
-    //var onSearch: (String) -> Void = { _ in }
+    var onSearch: (String) -> Void = { _ in }
     
     var body: some View {
         VStack {
@@ -38,15 +38,16 @@ struct SearchBar: View {
                     )
                     .onSubmit {
                         // Trigger the search action on "Enter"
-                        //MARK: TODO add search function here
+                        onSearch(searchText)
+                    }
+                    .onChange(of: searchText) {
+                        onSearch(searchText) // Use the updated value directly
                     }
                     .padding(.horizontal, 10)
             }
             .cornerRadius(25)
             .padding()
             
-            // Display the view returned by the onSearchView closure
-            SearchView()
         }
     }
 }
