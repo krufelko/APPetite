@@ -30,6 +30,7 @@ Usage
 2. Explore Recipes: Browse through the list of available recipes.
 3. View Details: Tap on a recipe to see detailed information, including ingredients and instructions.
 4. Simplify Instructions: Use the “Let’s Cook” button to simplify complex instructions via the Gemini API.
+5. Bookmark Favorites: If you have a recipe that you use often or found a new 
 6. The Problem We Solve: The problem we are solving is that recipes are often overwhelming for beginners and 	if its your first time cooking a recipe so we've enabled you to complete the recipe while keeping the instructions simple.
 
 API Integration
