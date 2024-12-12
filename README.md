@@ -4,9 +4,9 @@ APPetite is an iOS application that provides users with a curated selection of c
 
 Features
 
-	•	Recipe Discovery: Browse a diverse collection of recipes sourced from the MealDB API.
-	•	Instruction Simplification: Utilize the Gemini API to convert complex cooking instructions into clear, concise steps.
-	•	User-Friendly Interface: Navigate through recipes with an intuitive and responsive design.
+- Recipe Discovery: Browse a diverse collection of recipes sourced from the MealDB API.
+- Instruction Simplification: Utilize the Gemini API to convert complex cooking instructions into clear, concise steps.
+- User-Friendly Interface: Navigate through recipes with an intuitive and responsive design.
 
 Installation
 
@@ -33,5 +33,5 @@ Usage
 
 API Integration
 
-	•	MealDB API: Provides a vast collection of meal recipes.
-	•	Gemini API: Simplifies detailed instructions into easy-to-follow steps.
+- MealDB API: Provides a vast collection of meal recipes.
+- Gemini API: Simplifies detailed instructions into easy-to-follow steps.
