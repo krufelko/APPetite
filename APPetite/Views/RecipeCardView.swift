@@ -34,9 +34,11 @@ struct RecipeCardView: View {
             
             // Recipe Details
             VStack(alignment: .leading, spacing: 12) {
-                Text(recipe.name)
-                    .font(.title)
-                    .fontWeight(.bold)
+                HStack {
+                    Text(recipe.name)
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
                 
                 // Ingredients Section
                 VStack(alignment: .leading, spacing: 8) {
