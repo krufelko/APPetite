@@ -13,8 +13,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-class RecipeBookmarkManager {
+class RecipeBookmarkManager: ObservableObject {
     private let bookmarksKey = "bookmarkedRecipes"
     private var bookmarks: [Recipe] = []
 
