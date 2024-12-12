@@ -41,3 +41,4 @@ API Integration
 Next Steps: 
 - We plan to allow you to translate and simplify recipes from foreign cultures, so that they are easily understandable in your language and the culinary style you are used to.
 - More customizable filtering
+- Add semantic search
