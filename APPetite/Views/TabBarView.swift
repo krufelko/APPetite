@@ -12,19 +12,19 @@ struct TabBarView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "frying.pan")
                     Text("Home")
                 }
             
             ShoppingListView()
                 .tabItem {
-                    Image(systemName: "list.bullet.clipboard")
+                    Image(systemName: "pencil.and.list.clipboard")
                     Text("Shopping List")
                 }
             
             BookmarksView()
                 .tabItem {
-                    Image(systemName: "book.fill")
+                    Image(systemName: "books.vertical")
                     Text("Bookmarks")
                 }
             
@@ -36,7 +36,7 @@ struct TabBarView: View {
             
             SettingsView()
                 .tabItem {
-                    Image(systemName: "gearshape.fill")
+                    Image(systemName: "wrench.adjustable")
                     Text("Settings")
                 }
         }

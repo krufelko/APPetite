@@ -13,12 +13,18 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(spacing: 8) {
+                    //MARK: TODO
+                    //add the App logo here
+                    Image("Logo_BGR_C")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
                     // Header
                     Text("Hey Chef!")
                         .font(.largeTitle)
                         .bold()
-                        .padding(.horizontal)
+                        .padding()
                     
                     // "Recipes just for you" section
                     SectionView(title: "Recipes just for you") {

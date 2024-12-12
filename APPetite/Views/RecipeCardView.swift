@@ -1,95 +1,123 @@
-//
-//  RecipeCard.swift
-//  Appetite
-//
-//  Created by Evelyn Tran on 11/16/24.
-//
-
 import SwiftUI
 
 struct RecipeCardView: View {
     let recipe: Recipe
-    
+    @State private var isIngredientsExpanded: Bool = false
+    @State private var isInstructionsExpanded: Bool = false
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Recipe Image
-            AsyncImage(url: URL(string: recipe.imageURL)) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                case .failure(_):
-                    Image(systemName: "photo")
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 16) {
+                // Recipe Image
+                AsyncImage(url: URL(string: recipe.imageURL)) { phase in
+                    switch phase {
+                    case .empty:
+                        Color.gray.opacity(0.3)
+                            .frame(height: 200)
+                            .cornerRadius(12)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 200)
+                            .clipped()
+                            .cornerRadius(12)
+                    case .failure(_):
+                        Color.gray
+                            .frame(height: 200)
+                            .cornerRadius(12)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                .frame(height: 200)
+                .cornerRadius(12)
+
+                VStack(alignment: .leading, spacing: 16) {
+                    // Recipe Details
+                    HStack {
+                        Text("easy")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Text("15 min")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+
+                    Text(recipe.name)
                         .font(.largeTitle)
-                @unknown default:
-                    EmptyView()
-                }
-            }
-            .frame(height: 200)
-            .clipped()
-            .cornerRadius(12)
-            
-            // Recipe Details
-            VStack(alignment: .leading, spacing: 12) {
-                Text(recipe.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                // Ingredients Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Ingredients")
-                        .font(.headline)
-                    
-                    ForEach(Array(zip(recipe.ingredients, recipe.measures)), id: \.0) { ingredient, measure in
-                        Text("• \(measure) \(ingredient)")
-                            .font(.subheadline)
+                        .fontWeight(.bold)
+
+                    // Tags
+                    //HStack(spacing: 8) {
+                    //    TagView(tag: "vegetarian")
+                    //    TagView(tag: "gluten-free")
+                    //    TagView(tag: "high-protein")
+                    //}
+
+                    // Ingredients Section
+                    DisclosureGroup(isExpanded: $isIngredientsExpanded) {
+                        ForEach(Array(zip(recipe.ingredients, recipe.measures)), id: \.0) { ingredient, measure in
+                            HStack {
+                                Text(ingredient)
+                                Spacer()
+                                Text(measure)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    } label: {
+                        Text("Ingredients")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                    }
+
+                    Divider()
+
+                    // Instructions Section
+                    DisclosureGroup(isExpanded: $isInstructionsExpanded) {
+                        ForEach(recipe.simplifiedSteps.indices, id: \.self) { index in
+                            Text("\(index + 1). \(recipe.simplifiedSteps[index])")
+                                .padding(.vertical, 4)
+                        }
+                    } label: {
+                        Text("Instructions")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
                     }
                 }
-                
-                Divider()
-                
-                // Steps Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Steps")
-                        .font(.headline)
-                    
-                    ForEach(recipe.simplifiedSteps.indices, id: \.self) { index in
-                        Text("\(index + 1). \(recipe.simplifiedSteps[index])")
-                            .font(.subheadline)
-                    }
-                }
+                .padding()
+
+               
             }
+            .cornerRadius(16)
             .padding()
         }
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(radius: 5)
-        .padding(.horizontal)
-    }
-}
-
-struct RecipeCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeCardView(
-            recipe: Recipe(
-                id: "1",
-                name: "Spaghetti Carbonara",
-                instructions: "Cook spaghetti. Mix eggs, cheese, and bacon. Combine and serve.",
-                ingredients: ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon"],
-                measures: ["200g", "2", "50g", "100g"],
-                imageURL: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
-                simplifiedSteps: [
-                    "Boil spaghetti until al dente.",
-                    "Cook bacon until crispy.",
-                    "Mix eggs and Parmesan in a bowl.",
-                    "Combine everything in the pan and serve."
-                ]
-            )
-        )
-        .previewLayout(.sizeThatFits)
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .toolbar(.hidden, for: .tabBar) // Hide the tab bar
+        
+        // Call to Action Button
+        Button(action: {
+            // Action for cooking
+        }) {
+            Text("Let's cook")
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.white.opacity(0.3))
+                .cornerRadius(10)
+                .shadow(radius: 3)
+                .overlay(
+                    HStack {
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                            .foregroundColor(.black)
+                            .padding(.trailing, 8)
+                    }
+                )
+        }
+        .foregroundColor(.black)
         .padding()
     }
 }
