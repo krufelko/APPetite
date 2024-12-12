@@ -1,12 +1,4 @@
-//
-//  Recipe.swift
-//  APPetite
-//
-//  Created by Felix Krumme on 10.12.24.
-//
 
-
-//
 //  Recipe.swift
 //  Appetite
 //
@@ -35,21 +27,5 @@ struct Recipe: Codable, Identifiable {
     
     public mutating func setIsBookmarked(value: Bool) {
         self.isBookmarked = value
-    }
-    
-}
-
-struct MealDBResponse: Codable {
-    let meals: [MealDBMeal]?
-}
-
-struct MealDBMeal: Codable {
-    let idMeal: String
-    let strMeal: String
-    let strInstructions: String
-    let strMealThumb: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case idMeal, strMeal, strInstructions, strMealThumb
     }
 }

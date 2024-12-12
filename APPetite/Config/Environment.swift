@@ -1,13 +1,5 @@
 //
 //  Environment.swift
-//  APPetite
-//
-//  Created by Felix Krumme on 10.12.24.
-//
-
-
-//
-//  Environment.swift
 //  Appetite
 //
 //  Created by Evelyn Tran on 11/16/24.
@@ -24,12 +16,15 @@ enum Environment {
     }()
     
     static let geminiAPIKey: String = {
-        guard let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] else {
-            fatalError("GEMINI_API_KEY not set in environment")
+        if let apiKey = ProcessInfo.processInfo.environment["GEMINI_API_KEY"] {
+            return apiKey
         }
-        return apiKey
+        // Fallback to check Info.plist
+        if let apiKey = infoDictionary["GEMINI_API_KEY"] as? String {
+            return apiKey
+        }
+        fatalError("GEMINI_API_KEY not found in environment or Info.plist")
     }()
     
     static let mealDBBaseURL = "https://www.themealdb.com/api/json/v1/1"
 }
-
