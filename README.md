@@ -39,4 +39,5 @@ API Integration
 - Gemini API: Simplifies detailed instructions into easy-to-follow steps.
 
 Next Steps: 
-- We plan to allow you to translate and simplify recipes from foreign cultures, so that they are easily understandable in your language and the culinary style you are used to. 
+- We plan to allow you to translate and simplify recipes from foreign cultures, so that they are easily understandable in your language and the culinary style you are used to.
+- More customizable filtering
