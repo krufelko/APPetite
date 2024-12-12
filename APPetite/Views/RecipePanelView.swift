@@ -27,16 +27,16 @@ struct RecipePanel: View {
                         Text("easy") // Example difficulty, can be dynamic
                         
                             .font(.caption)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         Spacer()
                         Text("15 min") // Example time, can be dynamic
                             .font(.caption)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                     }
                     Spacer()
                     Text(recipe.name)
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .bold()
                         .lineLimit(2) // Allow text to wrap to two lines
                         .multilineTextAlignment(.leading)

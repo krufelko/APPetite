@@ -74,7 +74,7 @@ struct HomeView: View {
                             id: "4",
                             name: "Lemon Bars",
                             instructions: "A tart and sweet dessert.",
-                            ingredients: [],
+                            ingredients: ["Pineapple"],
                             measures: [],
                             imageURL: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg"
                         ))
