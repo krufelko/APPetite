@@ -7,11 +7,10 @@ struct RecipeCardView: View {
     @State private var isInstructionsExpanded: Bool = false
     @State private var isSheetPresented: Bool = false
     @ObservedObject var bookmarkManager = RecipeBookmarkManager()
-    //@ObservedObject var ingredientManager = RecipeIngredientManager // Add this at the top
+    @SwiftUI.Environment(\.dismiss) private var dismiss // Environment variable to dismiss the view
 
-    
     var body: some View {
-
+        VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 16) {
                     // Recipe Image
@@ -92,59 +91,10 @@ struct RecipeCardView: View {
                 .padding()
             }
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        isSheetPresented = true
-                    }) {
-                        Image(systemName: "ellipsis.circle")
-                            .imageScale(.large)
-                    }
-                }
-            }
-            .sheet(isPresented: $isSheetPresented) {
-                VStack {
-                    Button(action: {
-                        bookmarkManager.addBookmark(recipe)
-                        isSheetPresented = false
-                    }) {
-                        Text("Add to Bookmarks")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal)
-                    
-                    Button(action: {
-                        // Action for adding to shopping list
-                    }) {
-                        Text("Add to Shopping List")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal)
-                    
-                    Button(action: {
-                        isSheetPresented = false
-                    }) {
-                        Text("Cancel")
-                            .foregroundColor(.red)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal)
-                }
-                .padding()
-            }
             
             // Call to Action Button
             Button(action: {
-                
+                // Example action for the "Let's cook" button
             }) {
                 Text("Let's cook")
                     .font(.headline)
@@ -165,5 +115,63 @@ struct RecipeCardView: View {
             .foregroundColor(.black)
             .padding()
         }
+        .toolbar {
+            // Dismiss button for full-screen view
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss() // Dismisses the full-screen view
+                }) {
+                    Image(systemName: "xmark")
+                        .imageScale(.large)
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    isSheetPresented = true
+                }) {
+                    Image(systemName: "ellipsis.circle")
+                        .imageScale(.large)
+                }
+            }
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            VStack {
+                Button(action: {
+                    bookmarkManager.addBookmark(recipe)
+                    isSheetPresented = false
+                }) {
+                    Text("Add to Bookmarks")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                Button(action: {
+                    // Action for adding to shopping list
+                }) {
+                    Text("Add to Shopping List")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                Button(action: {
+                    isSheetPresented = false
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(.red)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+            }
+            .padding()
+        }
     }
-
+}
