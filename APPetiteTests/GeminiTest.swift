@@ -7,7 +7,6 @@
 
 import XCTest
 import Foundation
-import GoogleGenerativeAI
 @testable import APPetite
 
 final class GeminiTest: XCTestCase {
@@ -19,41 +18,24 @@ final class GeminiTest: XCTestCase {
     }
     
     func testGeminiAPI() async throws {
-        let expectation = expectation(description: "Test Gemini API")
+        let testInstructions = "Boil water. Add pasta. Cook for 10 minutes. Drain and serve."
         
         do {
-            print("Testing Gemini API with simple instruction...")
-            let testInstructions = "Boil water. Add pasta. Cook for 10 minutes. Drain and serve."
             let steps = try await networkManager.simplifyInstructions(testInstructions)
-            
             XCTAssertFalse(steps.isEmpty, "Steps should not be empty")
             print("Simplified steps: \(steps)")
-            
-            expectation.fulfill()
         } catch {
-            XCTFail("API test failed with error: \(error)")
-            expectation.fulfill()
+            XCTFail("Gemini API test failed with error: \(error)")
         }
-        
-        await fulfillment(of: [expectation], timeout: 30.0)
     }
     
     func testMealDBAPI() async throws {
-        let expectation = expectation(description: "Test MealDB API")
-        
         do {
-            print("Testing MealDB API...")
             let recipes = try await networkManager.searchRecipes(query: "chicken")
-            
             XCTAssertFalse(recipes.isEmpty, "Should find some recipes")
             print("Found \(recipes.count) recipes")
-            
-            expectation.fulfill()
         } catch {
-            XCTFail("API test failed with error: \(error)")
-            expectation.fulfill()
+            XCTFail("MealDB API test failed with error: \(error)")
         }
-        
-        await fulfillment(of: [expectation], timeout: 30.0)
     }
 }
