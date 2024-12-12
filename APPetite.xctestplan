@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "42C73F48-97E3-4F23-8F28-51AB6DC547C4",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "GEMINI_API_KEY",
+        "value" : "AIzaSyCeYP-3Prr0mlq86OTWCDnpAkqUUgdeUg0"
+      },
+      {
+        "key" : "geminyAPIKey",
+        "value" : "AIzaSyCeYP-3Prr0mlq86OTWCDnpAkqUUgdeUg0"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:APPetite.xcodeproj",
+      "identifier" : "B1565C4B2D09007A008B64C2",
+      "name" : "APPetite"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:APPetite.xcodeproj",
+        "identifier" : "B1565C5B2D09007E008B64C2",
+        "name" : "APPetiteTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:APPetite.xcodeproj",
+        "identifier" : "B1565C652D09007E008B64C2",
+        "name" : "APPetiteUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
