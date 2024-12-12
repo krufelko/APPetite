@@ -18,10 +18,6 @@ struct HomeView: View {
                         .bold()
                         .padding(.horizontal)
                     
-                    // Search Bar
-                    SearchBar()
-                        .padding(.horizontal)
-                    
                     // "Recipes just for you" section
                     SectionView(title: "Recipes just for you") {
                         ScrollView(.horizontal, showsIndicators: false) {
