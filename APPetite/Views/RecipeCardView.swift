@@ -7,6 +7,7 @@ struct RecipeCardView: View {
     @State private var isInstructionsExpanded: Bool = false
     @State private var isSheetPresented: Bool = false
     @ObservedObject var bookmarkManager = RecipeBookmarkManager()
+    @ObservedObject var ingredientManager = RecipeIngredientManager() // Add this line
     @SwiftUI.Environment(\.dismiss) private var dismiss // Environment variable to dismiss the view
 
     var body: some View {
@@ -149,7 +150,8 @@ struct RecipeCardView: View {
                 .padding(.horizontal)
                 
                 Button(action: {
-                    // Action for adding to shopping list
+                    //MARK: TODO
+                    isSheetPresented = false
                 }) {
                     Text("Add to Shopping List")
                         .padding()

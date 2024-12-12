@@ -91,7 +91,7 @@ struct HomeView: View {
                 }
                 .padding(.vertical)
             }
-            .background(Color.yellow.ignoresSafeArea())
+            .background(Color.white.ignoresSafeArea())
             .onAppear {
                             viewModel.fetchRandomRecipes(count: 10)
                         }

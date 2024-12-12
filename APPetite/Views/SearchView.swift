@@ -45,7 +45,7 @@ struct SearchView: View {
                     Text("")
                 }
             }
-            .background(Color.yellow.ignoresSafeArea())
+            .background(Color.white.ignoresSafeArea())
             .navigationTitle("Search")
         }
     }
