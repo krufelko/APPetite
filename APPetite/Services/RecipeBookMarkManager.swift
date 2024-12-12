@@ -34,10 +34,10 @@ class RecipeBookmarkManager: ObservableObject {
     /// Adds a new bookmark if it does not already exist
     /// - Parameter recipe: The recipe to add to the bookmarks
     func addBookmark(_ recipe: Recipe) {
-        if !bookmarks.contains(where: { $0.id == recipe.id }) {
+        //if !bookmarks.contains(where: { $0.id == recipe.id }) {
             bookmarks.append(recipe)
             saveBookmarks()
-        }
+        //}
     }
     
     /// Removes a bookmark if it exists

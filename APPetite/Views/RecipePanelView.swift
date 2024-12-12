@@ -2,8 +2,10 @@ import SwiftUI
 
 struct RecipePanel: View {
     let recipe: Recipe
-    private let panelWidth: CGFloat = 200 // Fixed width for all panels
-
+    private let panelWidth: CGFloat = 180 // Fixed width for all panels
+    
+    
+    
     var body: some View {
         NavigationLink(destination: RecipeCardView(recipe: recipe).toolbar(.visible, for: .tabBar)) {
             ZStack {

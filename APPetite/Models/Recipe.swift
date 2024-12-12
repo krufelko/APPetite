@@ -8,6 +8,7 @@
 import Foundation
 
 struct Recipe: Codable, Identifiable {
+    let uuid: UUID = UUID()
     let id: String
     let name: String
     let instructions: String

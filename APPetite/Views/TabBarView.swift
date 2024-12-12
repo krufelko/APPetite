@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
+    var recipeBookmarkManager = RecipeBookmarkManager()
     var body: some View {
         TabView {
             HomeView()
@@ -23,7 +23,7 @@ struct TabBarView: View {
                     Text("Shopping List")
                 }
             
-            BookmarksView()
+            BookmarksView(viewModel: recipeBookmarkManager)
                 .tabItem {
                     Image(systemName: "books.vertical")
                     Text("Bookmarks")
