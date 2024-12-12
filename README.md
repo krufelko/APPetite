@@ -11,12 +11,16 @@ Features
 Installation
 
 	1.	git clone https://github.com/krufelko/APPetite.git
+ 
 
 	2.	cd APPetite
  
+ 
  	3.	open APPetite.xcodeproj
+  
  
  	4.	Install Package Dependencies: generative-ai-swift 
+  
 
 	5.	Build and Run: Select the appropriate simulator or device, then build and run the project in Xcode.
 
