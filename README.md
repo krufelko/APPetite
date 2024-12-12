@@ -42,3 +42,4 @@ Next Steps:
 - We plan to allow users to translate and simplify recipes from foreign cultures, so that they are easily understandable in their native language and the culinary styles they are used to.
 - More customizable filtering such as substitute ingredients for diet restrictions
 - Add semantic search
+- TTS & STT w/ GPT 4o Voice Agent
