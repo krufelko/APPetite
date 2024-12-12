@@ -30,10 +30,13 @@ Usage
 2. Explore Recipes: Browse through the list of available recipes.
 3. View Details: Tap on a recipe to see detailed information, including ingredients and instructions.
 4. Simplify Instructions: Use the “Let’s Cook” button to simplify complex instructions via the Gemini API.
-5. Bookmark Favorites: If you have a recipe that you use often or found a new 
-6. The Problem We Solve: The problem we are solving is that recipes are often overwhelming for beginners and if it's your first time cooking a recipe so we've enabled you to complete the recipe while keeping the instructions simple.
+5. Bookmark Favorites: If you have a recipe that you use often or found a new recipe you enjoy bookmark it and it will appear in your recipe bookmarks.
+6. The Problem We Solve: The problem we are solving is that recipes are often overwhelming for beginners. If it's your first time cooking a recipe, we've enabled you to complete it while keeping the instructions simple.
 
 API Integration
 
 - MealDB API: Provides a vast collection of meal recipes.
 - Gemini API: Simplifies detailed instructions into easy-to-follow steps.
+
+Next Steps: 
+- We plan to allow you to translate and simplify recipes that are authentic to foreign cultures to be easily understandable in your language and the culinary style you are used to. 
