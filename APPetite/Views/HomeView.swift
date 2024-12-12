@@ -8,37 +8,55 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel = RecipeViewModel()
+
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(spacing: 8) {
+                    //MARK: TODO
+                    //add the App logo here
+                    Image("Logo_BGR_C")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
                     // Header
                     Text("Hey Chef!")
                         .font(.largeTitle)
                         .bold()
-                        .padding(.horizontal)
+                        .padding()
                     
                     // "Recipes just for you" section
                     SectionView(title: "Recipes just for you") {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
-                                RecipePanel(recipe: Recipe(
-                                    id: "1",
-                                    name: "Scrambled Eggs",
-                                    instructions: "Quick and easy scrambled eggs.",
-                                    ingredients: [],
-                                    measures: [],
-                                    imageURL: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
-                                ))
-                                RecipePanel(recipe: Recipe(
-                                    id: "2",
-                                    name: "Breakfast Burritos",
-                                    instructions: "A delicious breakfast burrito.",
-                                    ingredients: [],
-                                    measures: [],
-                                    imageURL: "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg"
-                                ))
+                                if let error = viewModel.errorMessage {
+                                Group {
+                                    Text(error)
+                                        .foregroundColor(.red)
+                                        .padding()
+                                }
+                            } else if viewModel.randomRecipes.isEmpty {
+                                ForEach(0..<10, id: \.self) { _ in
+                                    Group {
+                                        RecipePanel(recipe: Recipe(
+                                            id: "0",
+                                            name: "Loading...",
+                                            instructions: "",
+                                            ingredients: [],
+                                            measures: [],
+                                            imageURL: ""
+                                        ))
+                                        .opacity(0.5) // Grayed out appearance
+                                        .disabled(true) // Ensures the panel is non-interactive
+                                    }
+                                }
+                            } else {
+                                ForEach(viewModel.randomRecipes, id: \.id) { recipe in
+                                    RecipePanel(recipe: recipe)
+                                }
                             }
+                        }
                             .padding(.horizontal)
                         }
                     }
@@ -62,7 +80,7 @@ struct HomeView: View {
                             id: "4",
                             name: "Lemon Bars",
                             instructions: "A tart and sweet dessert.",
-                            ingredients: [],
+                            ingredients: ["Pineapple"],
                             measures: [],
                             imageURL: "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg"
                         ))
@@ -74,6 +92,9 @@ struct HomeView: View {
                 .padding(.vertical)
             }
             .background(Color.yellow.ignoresSafeArea())
+            .onAppear {
+                            viewModel.fetchRandomRecipes(count: 10)
+                        }
         }
     }
 }
